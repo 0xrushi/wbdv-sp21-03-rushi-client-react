@@ -13,20 +13,23 @@ export default class CourseTable
     render() {
         return (
             <div>
-                <h2>Course Table</h2>
-                <Link to="/courses/grid">
-                    <i className="fas fa-2x fa-th float-right"></i>
-                </Link>
-                <table className="table">
+                <br></br>
+                {/* <h2>Course Table</h2> */}
+                {/* <Link to="/courses/grid">
+                    <i className="fas   fa-2x fa-th float-right"></i>
+                </Link> */}
+                <table className="table container">
                     <thead className="thead-dark">
                         <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Owned by</th>
-                            <th scope="col">Last modified</th>
+                            <th scope="col" className="fa-2x">Title</th>
+                            <th scope="col" className="fa-2x">Owned by</th>
+                            <th scope="col" className="fa-2x">Last modified</th>
                             <th scope="col">
-                                <i className="fa fa-folder"></i>
-                                <i className="fas fa-sort-amount-up"></i>
-                                <i className="fas fa-th-large"></i>
+                                <i className=" mx-2 fa fa-2x fa-folder"></i>
+                                <i className="mx-2 fas fa-2x fa-sort-amount-up"></i>
+                                <Link to="/courses/grid">
+                                    <i className="fas fa-2x fa-th"></i>
+                                </Link>
                             </th>
                             {/* <th scope="col">Modify</th> */}
                         </tr>

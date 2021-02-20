@@ -1,14 +1,20 @@
 import React from 'react'
-import CourseTable from "./course-table";
-import CourseGrid from "./course-grid";
+import CourseTable from "./course-table/course-table";
+import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor";
 import {Route} from "react-router-dom";
 import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
+import CourseManagerNavbar from "../components/course-manager-navbar";
 
 
 class CourseManager extends React.Component {
     state = {
         courses: [],
+        tempCourse:{
+            title: "",
+            owner: "default",
+            lastModified: "Never"
+        },
         qwe: 123,
         sdf: 456
       }
@@ -28,11 +34,7 @@ class CourseManager extends React.Component {
     // }
 
     addCourse = () => {
-        const newCourse = {
-            title: "New Course",
-            owner: "New Owner",
-            lastModified: "Never"
-        }
+        const newCourse = this.state.tempCourse
         // this.state.courses.push(newCourse)
         // this.setState(this.state)
 
@@ -45,7 +47,10 @@ class CourseManager extends React.Component {
                 ]
             })
         ))
-    }
+
+        //clear addcourse input box
+        this.setState({tempCourse: {title: ""}})
+    }   
 
     deleteCourse = (courseToDelete) => {
 
@@ -97,11 +102,33 @@ class CourseManager extends React.Component {
             })))
     }
 
+    deleteAllCourses = () => {
+        this.state.courses.map((course, idx) => { 
+                
+        
+            
+            this.deleteCourse(course)
+                console.log(course._id, "deleted")
+        })
+    }
+
+    onCourseChange = (event) => {
+        this.setState({
+          tempCourse: {
+            owner: "default",
+            lastModified: "Never",
+            title: event.target.value,
+          }
+        })
+    }
+
     render() {
         return(
             <div>
                 <h1>Course Manager</h1>
-                <button onClick={this.addCourse}>Add Course</button>
+                {/* <button onClick={this.addCourse}>Add Course</button>
+                <button onClick={this.deleteAllCourses}>Deleteall Course</button> */}
+                <CourseManagerNavbar addCourse={this.addCourse} onCourseChange={this.onCourseChange} />
                 <Route path="/courses/table">
                     <CourseTable updateCourse={this.updateCourse} deleteCourse={this.deleteCourse} courses={this.state.courses}/>
                 </Route>
