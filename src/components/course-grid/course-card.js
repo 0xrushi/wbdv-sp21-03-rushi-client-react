@@ -17,7 +17,7 @@ const CourseCard = ({course, updateCourse, deleteCourse}) => {
   return (
       <div className="col mb-4">
         <div className="card">
-          <img src="https://dummyimage.com/600x400/000/fff.jpg"
+          <img src="https://images.theage.com.au/2009/08/21/690978/bay6-600x400.jpg"
                className="card-img-top" alt="..."/>
           <div className="card-body">
             {
@@ -34,13 +34,13 @@ const CourseCard = ({course, updateCourse, deleteCourse}) => {
             }
 
             <p className="card-text">Some description</p>
-            <Link to="/courses/editor" className="btn wbdv-button">{course.title}</Link>
+            <Link to="/courses/editor" className="btn ">{course.title}</Link>
           </div>
           <div className="card-footer">
             <div className="float-right">
-              {editing && <i onClick={() => saveTitle()} className="fas fa-check wbdv-icons"></i>}
-              {editing && <i onClick={() => {setEditing(false); deleteCourse(course)}} className="far fa-trash-alt wbdv-icons"></i>}
-              {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit wbdv-icons"></i>}
+              {editing && <i onClick={() => saveTitle()} className="btn btn-primary fas fa-check mr-2"></i>}
+              {editing && <i onClick={() => {setEditing(false); deleteCourse(course)}} className="btn btn-primary far fa-trash-alt"></i>}
+              {!editing && <i onClick={() => setEditing(true)} className="btn btn-primary fas fa-edit"></i>}
             </div>
           </div>
         </div>

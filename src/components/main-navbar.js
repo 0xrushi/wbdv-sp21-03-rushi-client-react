@@ -26,8 +26,8 @@ class MainNavbar extends React.Component {
                           </form>
                       </li>
                   </ul>
-                  <button type="button" className="btn btn-primary mr-2" onClick="window.location.href='../login/login.template.client.html'">Login</button>
-                  <button type="button" className="btn btn-primary mr-0" onClick="window.location.href='../register/register.template.client.html'">Register</button>
+                  <button type="button" className="btn btn-primary mr-2" >Login</button>
+                  <button type="button" className="btn btn-primary mr-0" >Register</button>
               </div>
           </nav>
       )

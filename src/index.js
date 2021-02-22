@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Hello from './hello'
+// import Hello from './hello'
 import HelloClass from './hello-class'
 import reportWebVitals from './reportWebVitals';
 import '@fortawesome/fontawesome-free/css/all.min.css'
@@ -12,7 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <HelloClass/>
+    {/* <HelloClass/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

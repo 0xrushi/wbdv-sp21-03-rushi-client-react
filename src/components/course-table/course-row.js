@@ -39,11 +39,11 @@ const CourseRow = (
                     className="form-control"/>
             }
         </td>
-        <td>{owner}</td>
-        <td>{lastModified}</td>
+        <td className="d-none d-sm-table-cell">{owner}</td>
+        <td className="d-none d-lg-table-cell">{lastModified}</td>
         <td>
-            <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>
-            {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
+            <i onClick={() => deleteCourse(course)} className="btn btn-primary fas fa-trash mr-2"></i>
+            {!editing && <i onClick={() => setEditing(true)} className="btn btn-primary fas fa-edit mr-2"></i>}
             {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
         </td>
       </tr>

@@ -5,12 +5,12 @@ class CourseManagerNavbar extends React.Component {
     constructor(props) {
       super(props);
     }
-  
+   
     render() {
         console.log(this.props)
       return (
         <div>
-            <div className="container-fluid">
+            {/* <div className="container-fluid container-fluid2  h-100"> */}
               <span className="brand collapse navbar-collapse">Course Manager</span>
               <ul className="me-auto mb-2 mb-lg-0"/>
               <div className="d-flex">
@@ -20,10 +20,10 @@ class CourseManagerNavbar extends React.Component {
                 <button className="btn btn-primary my-2 my-sm-0 wbdv-nav-add" onClick={this.props.addCourse} type="submit">
                     <i className="fas fa-plus fa-sm wbdv-nav-plus"/></button>
               </div>
-            </div>
+            {/* </div> */}
 
             <button className="btn btn-primary my-2 my-sm-0 wbdv-nav-add fa-2x" id="fixedbutton" style={{"position": "fixed", "bottom": "50px", "right": "50px"}}>
-              <i className="fas fa-plus fa-sm wbdv-nav-plus fa-2x"/>
+              <i className="fas fa-plus fa-sm wbdv-nav-plus fa"/>
             </button>
         </div>
       )

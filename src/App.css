@@ -47,7 +47,47 @@
     background: #0077ff;
 }
 
-.container{
-    color: white;
-    background-color: #242526 ;
+html,body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#root{
+height:100%;
+width:100%;
+}
+
+
+div.container-fluid {
+  color: white;
+  background-color: #161718 ;
+}
+
+div.container-fluid2 {
+  color: white;
+  background-color: #161718 ;
+  height: inherit;
+  float: left;
+}
+
+.round-corners {
+  border-radius: 100%;
+}
+
+.container td{
+  color: white;
+  background-color: #242526 ;
+}
+
+.card-body {
+  background-color: #242526 ;
+}
+
+ div > div.card-footer   {
+  background-color: #363738 ;
+}
+
+.card{
+  height:100%;
 }
