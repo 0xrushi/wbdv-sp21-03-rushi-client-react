@@ -22,8 +22,8 @@ class CourseManagerNavbar extends React.Component {
               </div>
             {/* </div> */}
 
-            <button className="btn btn-primary my-2 my-sm-0 wbdv-nav-add fa-2x" id="fixedbutton" style={{"position": "fixed", "bottom": "50px", "right": "50px"}}>
-              <i className="fas fa-plus fa-sm wbdv-nav-plus fa"/>
+            <button className="btn btn-primary my-2 my-sm-0 wbdv-nav-add fa-2x" onClick={this.props.addCourse} id="fixedbutton" style={{"position": "fixed", "bottom": "50px", "right": "50px"}}>
+              <i className="fas fa-plus fa-sm wbdv-nav-plus"/>
             </button>
         </div>
       )
