@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css';
 import App from './App';
-// import Hello from './hello'
-import HelloClass from './hello-class'
+import Add from './components/test'
 import reportWebVitals from './reportWebVitals';
-import '@fortawesome/fontawesome-free/css/all.min.css'
+// import CounterReact from "./components/counter/react-state/counter-react";
+// import CounterRedux from "./components/counter/redux-state/counter-redux";
 
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    {/* <HelloClass/> */}
-  </React.StrictMode>,
+    <App />,
+    // <Add A={6} B={7}/>,
   document.getElementById('root')
 );
 
