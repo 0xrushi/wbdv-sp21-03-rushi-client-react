@@ -13,7 +13,9 @@ const LessonTabs = (
     const {layout, courseId, moduleId, lessonId} = useParams();
 
     useEffect(() => {
-        findLessonsForModule(moduleId)
+        if(moduleId !== "undefined" && typeof moduleId  !== "undefined"){
+            findLessonsForModule(moduleId)
+        }
     }, [moduleId])
 
     return(<div>
@@ -21,10 +23,12 @@ const LessonTabs = (
         <ul className="nav nav-pills wbdv-editor-nav-pills">
             {
                 lessons.map((lesson) =>
-                    <li className="nav-item">
+                    <li className = "nav-item">
                         <EditableItem
                             to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
-                            item={lesson}/>
+                            item={lesson}
+                            active={lesson._id === lessonId}
+                        />
                     </li>
                 )
             }
