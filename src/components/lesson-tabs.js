@@ -8,7 +8,9 @@ const LessonTabs = (
     {
         lessons=[],
         findLessonsForModule,
-        createLessonForModule
+        createLessonForModule,
+        updateLesson,
+        deleteLesson
     }) => {
     const {layout, courseId, moduleId, lessonId} = useParams();
 
@@ -20,13 +22,15 @@ const LessonTabs = (
 
     return(<div>
         <h2>Lesson Tabs</h2>
-        <ul className="nav nav-pills wbdv-editor-nav-pills">
+        <ul className="nav nav-pills wbdv-editor-nav-pills lesson-tabs-editable-item">
             {
                 lessons.map((lesson) =>
                     <li className = "nav-item">
                         <EditableItem
                             to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
                             item={lesson}
+                            updateItem={updateLesson}
+                            deleteItem={deleteLesson}
                             active={lesson._id === lessonId}
                         />
                     </li>
@@ -56,7 +60,19 @@ const dtpm = (dispatch) => ({
                 type:"CREATE_LESSON",
                 lesson
             }))
-    }
+    },
+    updateLesson: (lesson) =>
+        lessonService.updateLesson(lesson._id, lesson)
+            .then(status => dispatch({
+                type: "UPDATE_LESSON",
+                updatedLesson: lesson
+            })),
+    deleteLesson: (lessonToDelete) => {
+        lessonService.deleteLesson(lessonToDelete._id).then(
+            (status) => dispatch({ type: 'DELETE_LESSON', deleteItem: lessonToDelete })
+        )
+
+    },
 })
 
 export default connect(stpm, dtpm)(LessonTabs)

@@ -102,3 +102,11 @@ a .wbdv-editor-nav-pills{
     margin-top: 1.0rem;
     background-color: #1f2122;
 }
+
+.list-group-item {
+    margin: 5px;
+}
+
+.wbdv-editor-nav-pills.lesson-tabs-editable-item{
+    align-items: center;
+}

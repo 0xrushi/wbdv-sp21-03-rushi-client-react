@@ -2,10 +2,9 @@ import React from 'react'
 import CourseTable from "./course-table/course-table";
 import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor/course-editor";
-import {Route} from "react-router-dom";
+import {Route, useParams} from "react-router-dom";
 import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
 import CourseManagerNavbar from "../components/course-manager-navbar";
-
 
 class CourseManager extends React.Component {
     state = {
@@ -18,6 +17,7 @@ class CourseManager extends React.Component {
         qwe: 123,
         sdf: 456
       }
+
 
     // inbuilt function from ReactComponents which says it is a good time to set state after everything is loaded 
     componentDidMount(){
@@ -122,12 +122,15 @@ class CourseManager extends React.Component {
         })
     }
 
+
+
     render() {
         return(
             <div>
                 <h1>Course Manager</h1>
                 {/* <button onClick={this.addCourse}>Add Course</button>
                 <button onClick={this.deleteAllCourses}>Deleteall Course</button> */}
+                {/*(lessonId !== "undefined" && typeof lessonId  !== "undefined") &&*/}
                 <CourseManagerNavbar addCourse={this.addCourse} onCourseChange={this.onCourseChange} />
                 <Route path="/courses/table" exact={true}>
                     <CourseTable

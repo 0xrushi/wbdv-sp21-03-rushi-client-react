@@ -19,7 +19,7 @@ const EditableItem = (
                     <Link to={to} style={{color:"white"}}>
                         {item.title}
                     </Link>
-                    <i onClick={() => setEditing(true)} className="fas fa-edit ml-2"></i>
+                    <i onClick={() => setEditing(true)} className="btn btn-secondary fas fa-edit ml-2"></i>
                 </div>
             }
             {
@@ -27,12 +27,14 @@ const EditableItem = (
                 <>
                     <input
                         onChange={(e) => setItemCache({...itemCache, title: e.target.value})}
-                        value={itemCache.title}/>
-                    <i onClick={() => {
-                        setEditing(false)
-                        updateItem(itemCache)
-                    }} className="fas fa-check"></i>
-                    <i onClick={() => deleteItem(item)} className="fas fa-times"></i>
+                        value={itemCache.title} style={{marginRight: "5px"}}/>
+                        <>
+                            <i onClick={() => {
+                                setEditing(false)
+                                updateItem(itemCache)
+                            }} className="btn btn-secondary fas fa-check" style={{marginRight: "5px"}}></i>
+                            <i onClick={() => deleteItem(item)} className="btn btn-secondary fas fa-times"></i>
+                        </>
                 </>
             }
         </>
