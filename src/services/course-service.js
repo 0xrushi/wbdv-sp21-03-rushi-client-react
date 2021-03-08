@@ -41,6 +41,7 @@ export default {
     findAllCourses,
     deleteCourse: deleteCourse,
     createCourse, // same as createCourse: createCourse
-    updateCourse: updateCourse
+    updateCourse: updateCourse,
+    findCourseById
 }
 

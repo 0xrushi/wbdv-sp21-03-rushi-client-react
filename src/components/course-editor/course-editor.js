@@ -4,11 +4,14 @@ import {Link, useParams, useHistory} from "react-router-dom";
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
 import {combineReducers, createStore} from "redux";
-import {Provider} from "react-redux";
+import {connect, Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import topicReducer from "../../reducers/topic-reducer";
+import courseReducer from "../../reducers/course-reducer";
+import courseService from "../../services/course-service"
+import CourseEditorNavbar from "./course-editor-navbar";
 
 // const CourseEditor = ({course, lastModified, owner}) => {
 //     return (
@@ -27,9 +30,10 @@ import topicReducer from "../../reducers/topic-reducer";
 // }
 
 const reducer = combineReducers({
-    moduleReducer: moduleReducer,
-    lessonReducer: lessonReducer,
-    topicReducer: topicReducer
+    moduleReducer,
+    lessonReducer,
+    topicReducer,
+    courseReducer
 })
 const store = createStore(reducer)
 
@@ -157,7 +161,7 @@ const store = createStore(reducer)
 // }
 
 
-const CourseEditor = ({history, params}) => {
+const CourseEditor = ({history, course, findCourseById}) => {
     const {layout, courseId, moduleId} = useParams();
     let mdiv;
     if(moduleId !== "undefined" && typeof moduleId  !== "undefined")
@@ -168,14 +172,15 @@ const CourseEditor = ({history, params}) => {
 
     return(
         <Provider store={store}>
-            <h1>
-                <Link to="/courses/table">
-                    <i className="fas fa-arrow-left"></i>
-                </Link>
-                Course Editor
-                <i className="fas fa-times float-right"
-                   onClick={() => history.goBack()}></i>
-            </h1>
+            {/*<h1>*/}
+            {/*    <Link to="/courses/table">*/}
+            {/*        <i className="fas fa-arrow-left"></i>*/}
+            {/*    </Link>*/}
+            {/*    Course Editor*/}
+            {/*    <i className="fas fa-times float-right"*/}
+            {/*       onClick={() => history.goBack()}></i>*/}
+            {/*</h1>*/}
+            <CourseEditorNavbar/>
             <div className="row">
                 <div className="col-3">
                     <ModuleList/>

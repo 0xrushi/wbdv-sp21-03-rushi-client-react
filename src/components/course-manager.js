@@ -1,22 +1,33 @@
 import React from 'react'
 import CourseTable from "./course-table/course-table";
 import CourseGrid from "./course-grid/course-grid";
-import CourseEditor from "./course-editor/course-editor";
 import {Route, useParams} from "react-router-dom";
 import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
 import CourseManagerNavbar from "../components/course-manager-navbar";
 
 class CourseManager extends React.Component {
+
+    initialSate = {
+        title: "",
+        owner: "me",
+        lastModified: " "
+    }
+
     state = {
         courses: [],
-        tempCourse:{
-            title: "",
-            owner: "default",
-            lastModified: "Never"
-        },
-        qwe: 123,
-        sdf: 456
-      }
+        tempCourse: this.initialSate
+    }
+
+    // state = {
+    //     courses: [],
+    //     tempCourse:{
+    //         title: "",
+    //         owner: "default",
+    //         lastModified: "Never"
+    //     },
+    //     qwe: 123,
+    //     sdf: 456
+    //   }
 
 
     // inbuilt function from ReactComponents which says it is a good time to set state after everything is loaded 
@@ -84,22 +95,31 @@ class CourseManager extends React.Component {
             .filter(course => course === courseToEdit)
     }
 
+    // updateCourse = (course) => {
+    //     // console.log(course)
+    //     courseService.updateCourse(course._id, course)
+    //         .then(status => this.setState((prevState) => {
+    //           let nextState= {...prevState}
+    //             nextState.courses = prevState.courses.map(
+    //               (c) => c._id === course._id ? course : c)
+    //
+    //           // courses: prevState.courses.map(c => {
+    //           //   if(c._id === course._id) {
+    //           //     return course
+    //           //   } else {
+    //           //     return c
+    //           //   }
+    //           // })
+    //         }))
+    // }
+
     updateCourse = (course) => {
-        // console.log(course)
         courseService.updateCourse(course._id, course)
-            .then(status => this.setState((prevState) => {
-              let nextState= {...prevState}
-                nextState.courses = prevState.courses.map(
-                  (c) => c._id === course._id ? course : c)
-    
-              // courses: prevState.courses.map(c => {
-              //   if(c._id === course._id) {
-              //     return course
-              //   } else {
-              //     return c
-              //   }
-              // })
-            }))
+            .then(status => this.setState((prevState) => ({
+                ...prevState,
+                courses: prevState.courses.map(
+                    (c) => c._id === course._id ? course : c)
+            })))
     }
 
     deleteAllCourses = () => {
@@ -126,12 +146,16 @@ class CourseManager extends React.Component {
         return(
             <div>
                 <h1>Course Manager</h1>
+                <h2></h2>
                 {/* <button onClick={this.addCourse}>Add Course</button>
                 <button onClick={this.deleteAllCourses}>Deleteall Course</button> */}
                 {/*(lessonId !== "undefined" && typeof lessonId  !== "undefined") &&*/}
 
                 <Route path="/courses/table" exact={true}>
-                    <CourseManagerNavbar addCourse={this.addCourse} onCourseChange={this.onCourseChange} />
+                    <CourseManagerNavbar
+                        addCourse={this.addCourse}
+                        onCourseChange={this.onCourseChange}
+                    />
                     <CourseTable
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
@@ -143,7 +167,10 @@ class CourseManager extends React.Component {
                     {/*    deleteCourse={this.deleteCourse}*/}
                     {/*    courses={this.state.courses}*/}
                     {/*/>*/}
-                    <CourseManagerNavbar addCourse={this.addCourse} onCourseChange={this.onCourseChange} />
+                    <CourseManagerNavbar
+                        title={this.state.tempCourse.title}
+                        addCourse={this.addCourse}
+                        onCourseChange={this.onCourseChange} />
                     <CourseGrid
                         courses={this.state.courses}
                         updateCourse={this.updateCourse}
@@ -166,5 +193,7 @@ class CourseManager extends React.Component {
         )
     }
 }
+
+
 
 export default CourseManager

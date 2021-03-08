@@ -6,7 +6,7 @@ export default class CourseTable
     extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         // console.log(props)
     }
 
@@ -41,7 +41,7 @@ export default class CourseTable
                             {/*<CourseRow title="CS3456" owner="charlie" lastModified={"3/22/14"}/>*/}
                             {/*<CourseRow title="CS4567" owner="dan"   lastModified={"4/12/36"}/>*/}
                             {
-                                this.props.courses.map((course, ndx) =>
+                                this.props.courses.map((course, idx) =>
                                     <CourseRow
                                         deleteCourse={this.props.deleteCourse}
                                         updateCourse={this.props.updateCourse}
@@ -54,6 +54,7 @@ export default class CourseTable
                             }
                         </tbody>
                     </table>
+                    {/*{console.log(this.props.courses)}*/}
                 </div>
             </div>
         )

@@ -11,7 +11,7 @@ const CourseRow = (
         owner
     }) => {
     const [editing, setEditing] = useState(false)
-    const [newTitle, setNewTitle] = useState(course.title)
+    const [newTitle, setNewTitle] = useState(title)
 
     const saveTitle = () => {
         setEditing(false)
@@ -28,7 +28,7 @@ const CourseRow = (
             {
                 !editing &&
                 <Link to={`/courses/table/edit/${course._id}`}>
-                    {title}
+                    {course.title}
                 </Link>
             }
             {
@@ -42,8 +42,8 @@ const CourseRow = (
         <td className="d-none d-sm-table-cell">{owner}</td>
         <td className="d-none d-lg-table-cell">{lastModified}</td>
         <td>
-            <i onClick={() => deleteCourse(course)} className="btn btn-primary fas fa-trash mr-2"></i>
-            {!editing && <i onClick={() => setEditing(true)} className="btn btn-primary fas fa-edit mr-2"></i>}
+            {editing && <i onClick={() => deleteCourse(course)} className="btn btn-primary fas fa-trash mr-2"></i>}
+            {!editing && <i onClick={() => {setEditing(true)}} className="btn btn-primary fas fa-edit mr-2"></i>}
             {editing && <i onClick={() => saveTitle()} className="btn btn-primary fas fa-check"></i>}
         </td>
       </tr>
