@@ -6,7 +6,7 @@ import {connect, Provider} from "react-redux"
 
 
 const CourseEditorNavbar = ({course, findCourseById}) => {
-    const {layout, courseId, moduleId} = useParams();
+    const {layout, courseId, moduleId, history} = useParams();
 
     useEffect(() => {
         findCourseById(courseId)
@@ -20,32 +20,32 @@ const CourseEditorNavbar = ({course, findCourseById}) => {
                         <Link to={`/courses/${layout}`}>
                             <i className="fas fa-arrow-left wbdv-grey-color nav-link wbdv-btn-close"/>
                         </Link>
-
                     </div>
-                    <a className="navbar-brand" href="#">
-                <span className="ml-2">
-                  {course.title}
-           </span>
+                    <a className="btn btn-primary navbar-brand" href="#" style={{alignItems:"center"}}>
+                        <span>
+                            {course.title}
+                        </span>
                     </a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon">
-          <i className="fas fa-bars"/>
-        </span>
-                    </button>
+                    {/*<button className="navbar-toggler" type="button"*/}
+                    {/*        data-bs-toggle="collapse"*/}
+                    {/*        data-bs-target="#navbarSupportedContent"*/}
+                    {/*        aria-controls="navbarSupportedContent" aria-expanded="false"*/}
+                    {/*        aria-label="Toggle navigation">*/}
+                    {/*    <span className="navbar-toggler-icon">*/}
+                    {/*        <i className="fas fa-bars"/>*/}
+                    {/*    </span>*/}
+                    {/*</button>*/}
                     <div className="collapse navbar-collapse wbdv-nav-items"
                          id="navbarSupportedContent">
                         <ul className="navbar-nav mb-2 mb-lg-0 flex-row wbdv-nav-group">
                             <li className="nav-item wbdv-nav-item">
-                                <a className="nav-link" aria-current="page"
+                                <a className="btn btn-primary nav-link"
+                                   aria-current="page"
                                    href="/">Home</a>
                             </li>
-
                         </ul>
-
                     </div>
+
                 </div>
             </nav>
         </div>
@@ -53,13 +53,13 @@ const CourseEditorNavbar = ({course, findCourseById}) => {
     )
 }
 
-const mapStateToProps = state => {
+const stpm = state => {
     return {
         course: state.courseReducer.course
     }
 }
 
-const mapDispatchToProps = dispatch => ({
+const dtpm = dispatch => ({
     findCourseById: (courseId) => {
         CourseService.findCourseById(courseId)
             .then(theCourse => dispatch({
@@ -70,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CourseEditorNavbar)
+export default connect(stpm, dtpm)(CourseEditorNavbar)

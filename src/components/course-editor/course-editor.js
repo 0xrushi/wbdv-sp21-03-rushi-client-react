@@ -10,7 +10,6 @@ import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import topicReducer from "../../reducers/topic-reducer";
 import courseReducer from "../../reducers/course-reducer";
-import courseService from "../../services/course-service"
 import CourseEditorNavbar from "./course-editor-navbar";
 
 // const CourseEditor = ({course, lastModified, owner}) => {
@@ -169,7 +168,6 @@ const CourseEditor = ({history, course, findCourseById}) => {
             <LessonTabs/>
             <TopicPills/>
         </div>
-
     return(
         <Provider store={store}>
             {/*<h1>*/}
@@ -180,7 +178,7 @@ const CourseEditor = ({history, course, findCourseById}) => {
             {/*    <i className="fas fa-times float-right"*/}
             {/*       onClick={() => history.goBack()}></i>*/}
             {/*</h1>*/}
-            <CourseEditorNavbar/>
+            <CourseEditorNavbar history={history}/>
             <div className="row">
                 <div className="col-3">
                     <ModuleList/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseService from "../services/course-service";
+import CourseService from "../../services/course-service";
 
 class CourseManagerNavbar extends React.Component {
     constructor(props) {

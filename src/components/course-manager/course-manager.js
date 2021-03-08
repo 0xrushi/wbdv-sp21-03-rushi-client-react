@@ -1,9 +1,9 @@
 import React from 'react'
-import CourseTable from "./course-table/course-table";
-import CourseGrid from "./course-grid/course-grid";
+import CourseTable from "../course-table/course-table";
+import CourseGrid from "../course-grid/course-grid";
 import {Route, useParams} from "react-router-dom";
-import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
-import CourseManagerNavbar from "../components/course-manager-navbar";
+import courseService, {findAllCourses, deleteCourse} from "../../services/course-service";
+import CourseManagerNavbar from "./course-manager-navbar";
 
 class CourseManager extends React.Component {
 
