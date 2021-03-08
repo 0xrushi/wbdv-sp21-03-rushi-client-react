@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import {connect, Provider} from "react-redux";
-import EditableItem from "./editable-item";
+import EditableItem from "../editable-item";
 import {useParams} from "react-router-dom";
 // import {findModulesForCourse, createModule} from "../services/module-service";
-import moduleService from "../services/module-service"
-import './course-editor/course-editor.css';
+import moduleService from "../../services/module-service"
+import './course-editor.css';
 
 const ModuleList = (
     {
@@ -22,11 +22,11 @@ const ModuleList = (
     return(
         <div className="wbdv-editor-left-pane">
         <h2>Module List</h2>
-        <ul>
-            <li>layout: {layout}</li>
-            <li>courseId: {courseId}</li>
-            <li>moduleId: {moduleId}</li>
-        </ul>
+        {/*<ul>*/}
+        {/*    <li>layout: {layout}</li>*/}
+        {/*    <li>courseId: {courseId}</li>*/}
+        {/*    <li>moduleId: {moduleId}</li>*/}
+        {/*</ul>*/}
 
         <ul className="list-group wbdv-module-list">
             {
@@ -40,8 +40,8 @@ const ModuleList = (
                     </li>
                 )
             }
-            <li className="list-group-item">
-                <i onClick={() => createModule(courseId)} className="fas fa-plus fa-2x"></i>
+            <li className="list-group-item" style={{textAlign:"center"}}>
+                <i onClick={() => createModule(courseId)} className="btn btn-primary fas fa-plus fa-2x" style={{width:"100%"}}></i>
             </li>
         </ul>
     </div>)}

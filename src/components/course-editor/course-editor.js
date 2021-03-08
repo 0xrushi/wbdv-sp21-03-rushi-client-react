@@ -5,9 +5,9 @@ import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
-import ModuleList from "../module-list";
-import LessonTabs from "../lesson-tabs";
-import TopicPills from "../topic-pills";
+import ModuleList from "./module-list";
+import LessonTabs from "./lesson-tabs";
+import TopicPills from "./topic-pills";
 import topicReducer from "../../reducers/topic-reducer";
 
 // const CourseEditor = ({course, lastModified, owner}) => {
@@ -159,6 +159,13 @@ const store = createStore(reducer)
 
 const CourseEditor = ({history, params}) => {
     const {layout, courseId, moduleId} = useParams();
+    let mdiv;
+    if(moduleId !== "undefined" && typeof moduleId  !== "undefined")
+        mdiv=<div>
+            <LessonTabs/>
+            <TopicPills/>
+        </div>
+
     return(
         <Provider store={store}>
             <h1>
@@ -173,9 +180,9 @@ const CourseEditor = ({history, params}) => {
                 <div className="col-3">
                     <ModuleList/>
                 </div>
+
                 <div className="col-9">
-                    <LessonTabs/>
-                    <TopicPills/>
+                    {mdiv}
                 </div>
             </div>
         </Provider>

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link} from "react-router-dom";
 import CourseCard from "./course-card";
+import CourseRow from "../course-table/course-row";
 
-const CourseGrid = ({courses, updateCourse, deleteCourse}) =>
-    <div>
+const CourseGrid = ({courses, updateCourse, deleteCourse}) => {
+    return (<div>
         {/* <Link to="/courses/table">
             <i className="fas fa-list fa-2x float-right"></i>
         </Link> */}
@@ -43,15 +44,19 @@ const CourseGrid = ({courses, updateCourse, deleteCourse}) =>
                             
                         // </div>
                         <CourseCard
-                            key={idx}
-                            updateCourse={updateCourse}
                             deleteCourse={deleteCourse}
-                            course={course}/>
+                            updateCourse={updateCourse}
+                            key={course._id}
+                            course={course}
+                            title={course.title}
+                            owner={course.owner}
+                            lastModified={course.lastModified}/>
                         )
                 }
             </div>
         </div>
 
-    </div>
+    </div>)
+}
 
 export default CourseGrid

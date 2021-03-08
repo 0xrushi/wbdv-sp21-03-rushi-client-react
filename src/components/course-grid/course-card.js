@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 
-const CourseCard = ({course, updateCourse, deleteCourse}) => {
+const CourseCard = ({deleteCourse,
+                      updateCourse,
+                      course,
+                      lastModified,
+                      owner}) => {
   const [editing, setEditing] = useState(false)
   const [newTitle, setNewTitle] = useState(course.title)
 
@@ -22,7 +26,7 @@ const CourseCard = ({course, updateCourse, deleteCourse}) => {
           <div className="card-body">
             {
               !editing &&
-              <Link to="/courses/editor" className="card-title">{course.title}</Link>
+              <Link to={`/courses/grid/edit/${course._id}`} className="card-title">{course.title}</Link>
             }
 
             {
@@ -34,12 +38,12 @@ const CourseCard = ({course, updateCourse, deleteCourse}) => {
             }
 
             <p className="card-text">Some description</p>
-            <Link to="/courses/editor" className="btn ">{course.title}</Link>
+
           </div>
           <div className="card-footer">
             <div className="float-right">
               {editing && <i onClick={() => saveTitle()} className="btn btn-primary fas fa-check mr-2"></i>}
-              {editing && <i onClick={() => {setEditing(false); deleteCourse(course)}} className="btn btn-primary far fa-trash-alt"></i>}
+              {editing && <i onClick={() => {setEditing(false); deleteCourse(course);}} className="btn btn-primary far fa-trash-alt"></i>}
               {!editing && <i onClick={() => setEditing(true)} className="btn btn-primary fas fa-edit"></i>}
             </div>
           </div>

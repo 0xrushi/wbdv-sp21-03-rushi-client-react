@@ -11,7 +11,7 @@ const CourseRow = (
         owner
     }) => {
     const [editing, setEditing] = useState(false)
-    const [newTitle, setNewTitle] = useState(title)
+    const [newTitle, setNewTitle] = useState(course.title)
 
     const saveTitle = () => {
         setEditing(false)
@@ -44,7 +44,7 @@ const CourseRow = (
         <td>
             <i onClick={() => deleteCourse(course)} className="btn btn-primary fas fa-trash mr-2"></i>
             {!editing && <i onClick={() => setEditing(true)} className="btn btn-primary fas fa-edit mr-2"></i>}
-            {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
+            {editing && <i onClick={() => saveTitle()} className="btn btn-primary fas fa-check"></i>}
         </td>
       </tr>
   )

@@ -1,6 +1,6 @@
 
-const MODULES_URL = "https://wbdv-generic-server.herokuapp.com/api/jannunzi/modules"
-const LESSON_URL = "https://wbdv-generic-server.herokuapp.com/api/jannunzi/lessons"
+const MODULES_URL = "https://wbdv-generic-server.herokuapp.com/api/001023379/modules"
+const LESSON_URL = "https://wbdv-generic-server.herokuapp.com/api/001023379/lessons"
 
 
 export const findLessonsForModule = (moduleId) =>

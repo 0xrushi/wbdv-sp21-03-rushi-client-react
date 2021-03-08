@@ -7,7 +7,7 @@ export default class CourseTable
 
     constructor(props) {
         super(props)
-        console.log(props)
+        // console.log(props)
     }
 
     render() {
@@ -45,7 +45,7 @@ export default class CourseTable
                                     <CourseRow
                                         deleteCourse={this.props.deleteCourse}
                                         updateCourse={this.props.updateCourse}
-                                        key={ndx}
+                                        key={course._id}
                                         course={course}
                                         title={course.title}
                                         owner={course.owner}
